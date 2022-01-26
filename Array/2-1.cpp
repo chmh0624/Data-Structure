@@ -17,7 +17,7 @@ void allocArray(int ***p, int m, int n)
     *p[0] = malloc(sizeof(int) * m * n);
     for (int i = 1; i < m; i++)
     {
-        (*p)[i] = (*p) + i - 1 + n;
+        (*p)[i] = (*p)[i - 1] + n;
     }
 }
 
