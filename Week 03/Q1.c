@@ -55,7 +55,10 @@ void addToTail(struct Node **head, int data)
 */
 void deleteData(struct Node **head, int data)
 {
+	// Empty Linked List
     if ((*head) == NULL) return ;
+	
+	// One Node Left
     if ((*head) -> next == NULL) {
         if ((*head) -> data == data) {
             free(*head);
@@ -63,9 +66,13 @@ void deleteData(struct Node **head, int data)
         }
         return ;
     }
+	
+	// Else Cases
     struct Node *cur = *head;
     while (cur) {
+		// Find "data"
         if (cur -> data == data) {
+			// cur is head
             if (cur == *head) {
                 struct Node *temp = *head;
                 (*head) = (*head) -> next;
@@ -73,12 +80,14 @@ void deleteData(struct Node **head, int data)
                 free(temp);
                 return ;
             }
+			// cur is tail
             else if (cur -> next == NULL) {
                 struct Node *temp = cur;
                 cur -> prev -> next = NULL;
                 free(temp);
                 return ;
             }
+			// cur is in the middle
             else {
                 cur -> prev -> next = cur -> next;
                 cur -> next -> prev = cur -> prev;
