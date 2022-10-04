@@ -141,12 +141,14 @@ int pop(struct Node **stack)
 {
     if (*stack) {
         int r ;
+		// One Node Left
         if ((*stack) -> next == NULL) {
             r = (*stack) -> data;
             free(*stack);
             *stack = NULL;
             return r;
         }
+		// Pop Back
         struct Node *cur = *stack;
         while (cur -> next) cur = cur -> next;
         cur -> prev -> next = NULL;
